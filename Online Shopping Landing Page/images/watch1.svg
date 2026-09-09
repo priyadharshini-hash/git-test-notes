@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 240" role="img" aria-labelledby="watch1Title">
+  <title id="watch1Title">Walnut dial watch with leather strap</title>
+  <defs>
+    <linearGradient id="w1Bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E4DCC8"/>
+      <stop offset="1" stop-color="#D2C7AC"/>
+    </linearGradient>
+    <radialGradient id="w1Case" cx="0.4" cy="0.35" r="0.75">
+      <stop offset="0" stop-color="#E8B85C"/>
+      <stop offset="1" stop-color="#B98D3E"/>
+    </radialGradient>
+    <linearGradient id="w1Strap" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8C6230"/>
+      <stop offset="1" stop-color="#5F4520"/>
+    </linearGradient>
+  </defs>
+  <rect width="300" height="240" fill="url(#w1Bg)"/>
+  <rect x="128" y="16" width="44" height="70" rx="10" fill="url(#w1Strap)"/>
+  <rect x="128" y="154" width="44" height="70" rx="10" fill="url(#w1Strap)"/>
+  <path d="M128 30h44M128 210h44" stroke="#3E2C12" stroke-width="3" opacity=".5"/>
+  <circle cx="150" cy="120" r="62" fill="url(#w1Case)"/>
+  <circle cx="150" cy="120" r="62" fill="none" stroke="#7A5B26" stroke-width="3"/>
+  <circle cx="150" cy="120" r="46" fill="#3C2A12"/>
+  <path d="M150 84v36l24 14" stroke="#EAE4D6" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <circle cx="150" cy="120" r="4" fill="#EAE4D6"/>
+  <circle cx="150" cy="82" r="2.5" fill="#EAE4D6" opacity=".8"/>
+  <circle cx="150" cy="158" r="2.5" fill="#EAE4D6" opacity=".8"/>
+  <circle cx="112" cy="120" r="2.5" fill="#EAE4D6" opacity=".8"/>
+  <circle cx="188" cy="120" r="2.5" fill="#EAE4D6" opacity=".8"/>
+</svg>

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 240" role="img" aria-labelledby="shoe2Title">
+  <title id="shoe2Title">Canvas low-top sneaker, side profile</title>
+  <defs>
+    <linearGradient id="s2Bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E4DCC8"/>
+      <stop offset="1" stop-color="#D2C7AC"/>
+    </linearGradient>
+    <linearGradient id="s2Body" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F5F1E8"/>
+      <stop offset="1" stop-color="#DDD5C2"/>
+    </linearGradient>
+  </defs>
+  <rect width="300" height="240" fill="url(#s2Bg)"/>
+  <ellipse cx="160" cy="196" rx="98" ry="12" fill="#4A3A16" opacity=".14"/>
+  <path d="M84 128c-6-24 8-42 30-42h18c12 0 20 8 24 18l8 18c16 4 44 10 50 24 4 10-2 18-14 18H90c-8 0-14-6-14-14v-8c0-6 3-10 8-14Z" fill="url(#s2Body)"/>
+  <path d="M84 128v22" stroke="#8A8265" stroke-width="2" opacity=".5"/>
+  <path d="M104 96l6 22M124 92l6 24M144 92l8 24" stroke="#5F6E54" stroke-width="4" stroke-linecap="round"/>
+  <path d="M56 158h198v18a10 10 0 0 1-10 10H66a10 10 0 0 1-10-10Z" fill="#5F6E54"/>
+  <path d="M56 172h198" stroke="#4A5640" stroke-width="4" opacity=".6"/>
+</svg>

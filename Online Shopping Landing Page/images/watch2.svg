@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 240" role="img" aria-labelledby="watch2Title">
+  <title id="watch2Title">Steel chronograph watch with metal band</title>
+  <defs>
+    <linearGradient id="w2Bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E4DCC8"/>
+      <stop offset="1" stop-color="#D2C7AC"/>
+    </linearGradient>
+    <radialGradient id="w2Case" cx="0.4" cy="0.35" r="0.75">
+      <stop offset="0" stop-color="#8A8D82"/>
+      <stop offset="1" stop-color="#4A4D44"/>
+    </radialGradient>
+    <linearGradient id="w2Strap" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6B6E66"/>
+      <stop offset="1" stop-color="#3E4139"/>
+    </linearGradient>
+  </defs>
+  <rect width="300" height="240" fill="url(#w2Bg)"/>
+  <rect x="126" y="14" width="48" height="72" rx="8" fill="url(#w2Strap)"/>
+  <rect x="126" y="154" width="48" height="72" rx="8" fill="url(#w2Strap)"/>
+  <path d="M126 30h48M126 34h48M126 210h48M126 214h48" stroke="#22271F" stroke-width="2" opacity=".4"/>
+  <circle cx="150" cy="120" r="64" fill="url(#w2Case)"/>
+  <circle cx="150" cy="120" r="64" fill="none" stroke="#22271F" stroke-width="3"/>
+  <circle cx="150" cy="120" r="48" fill="#22271F"/>
+  <circle cx="150" cy="98" r="10" fill="none" stroke="#8A8D82" stroke-width="2"/>
+  <circle cx="150" cy="142" r="10" fill="none" stroke="#8A8D82" stroke-width="2"/>
+  <path d="M150 90v30l16 10" stroke="#D2A44F" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <circle cx="150" cy="120" r="4" fill="#D2A44F"/>
+</svg>

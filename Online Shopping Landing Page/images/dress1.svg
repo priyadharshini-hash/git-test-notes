@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 240" role="img" aria-labelledby="dress1Title">
+  <title id="dress1Title">Linen wrap dress on a hanger</title>
+  <defs>
+    <linearGradient id="d1Bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E4DCC8"/>
+      <stop offset="1" stop-color="#D2C7AC"/>
+    </linearGradient>
+    <linearGradient id="d1Body" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8E9B7E"/>
+      <stop offset=".6" stop-color="#5F6E54"/>
+      <stop offset="1" stop-color="#4A5640"/>
+    </linearGradient>
+  </defs>
+  <rect width="300" height="240" fill="url(#d1Bg)"/>
+  <ellipse cx="150" cy="214" rx="70" ry="10" fill="#4A3A16" opacity=".12"/>
+  <path d="M150 30l-14 16h28l-14-16Z" fill="#4A3A16"/>
+  <path d="M150 46v10" stroke="#4A3A16" stroke-width="3"/>
+  <path d="M118 56h64l14 26-20 8 6 118a6 6 0 0 1-6 6h-52a6 6 0 0 1-6-6l6-118-20-8Z" fill="url(#d1Body)"/>
+  <path d="M136 56c4 14 24 14 28 0" fill="none" stroke="#3C4535" stroke-width="4"/>
+  <path d="M132 90 150 104 168 90" fill="none" stroke="#3C4535" stroke-width="3" opacity=".6"/>
+  <path d="M150 104v96" stroke="#3C4535" stroke-width="3" opacity=".45"/>
+</svg>
