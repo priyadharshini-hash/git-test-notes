@@ -162,9 +162,9 @@
   .find-card .eyebrow{margin-bottom:var(--space-2);}
   .find-icon{
     width:100%; aspect-ratio:4/3; background:var(--surface-alt); border-radius:10px;
-    display:flex; align-items:center; justify-content:center; margin-bottom:var(--space-3);
+    overflow:hidden; margin-bottom:var(--space-3);
   }
-  .find-icon svg{width:56%; height:56%; color:var(--accent);}
+  .find-icon img{width:100%; height:100%; object-fit:cover; object-position:top; display:block;}
   .find-card h3{font-size:var(--fs-h3);}
   .find-price{font-family:'Space Mono',monospace; font-weight:700; font-size:1.15rem; margin-top:.3rem;}
   .find-quote{
@@ -203,9 +203,9 @@
   }
   .card-icon{
     aspect-ratio:5/4; background:var(--surface-alt); border-radius:10px;
-    display:flex; align-items:center; justify-content:center;
+    overflow:hidden;
   }
-  .card-icon svg{width:46%; height:46%; color:var(--ink);}
+  .card-icon img{width:100%; height:100%; object-fit:cover; object-position:top; display:block;}
   .card .tag{color:var(--sage); font-size:.72rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase;}
   .card h3{font-size:1.05rem; font-weight:600;}
   .card .material{color:var(--ink-soft); font-size:.85rem;}
@@ -312,7 +312,7 @@
       <div>
         <p class="eyebrow">Batch No. 24 — Autumn Restock</p>
         <h1>Considered objects, made in small batches.</h1>
-        <p class="hero-lede">Forty-one independent studios, one shelf. Every piece here is thrown, woven, cast or stitched to order — no warehouses of identical stock, no two mugs quite alike.</p>
+        <p class="hero-lede">Forty-one independent studios, one shelf. Every piece here is cut, stitched or built to order — no warehouses of identical stock, no two pieces quite alike.</p>
         <div class="cta-row">
           <a class="btn btn-primary" href="#shop">Shop the shelf</a>
           <a class="btn btn-ghost" href="#makers">Meet the makers</a>
@@ -326,11 +326,11 @@
       <div class="find-card">
         <p class="eyebrow">Today's find</p>
         <div class="find-icon">
-          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 22h30v20a10 10 0 0 1-10 10H24a10 10 0 0 1-10-10V22Z"/><path d="M44 26h6a6 6 0 0 1 0 12h-6"/><path d="M20 22c0-4 2-6 2-9M28 22c0-4 2-6 2-9M36 22c0-4 2-6 2-9" stroke-linecap="round"/></svg>
+          <img src="images/49c56e28279b28c50e52a609f6627704.png" alt="Navy Embroidered Salwar Suit with teal dupatta">
         </div>
-        <h3>Stoneware Batch Mug</h3>
-        <p class="find-quote">Every glaze pull comes out a little different — that's the ash doing its own thing in the kiln.</p>
-        <p class="find-price tabular">$34</p>
+        <h3>Navy Embroidered Suit</h3>
+        <p class="find-quote">Hand-finished zari embroidery on georgette — the teal dupatta is what makes it.</p>
+        <p class="find-price tabular">$148</p>
       </div>
     </div>
   </section>
@@ -346,88 +346,87 @@
 
       <div class="shelf" id="shelf" role="tablist" aria-label="Filter by category">
         <button class="pill" aria-pressed="true" data-filter="all">All</button>
-        <button class="pill" aria-pressed="false" data-filter="kitchen">Kitchen &amp; Table</button>
-        <button class="pill" aria-pressed="false" data-filter="linen">Linen &amp; Bath</button>
-        <button class="pill" aria-pressed="false" data-filter="light">Light &amp; Object</button>
-        <button class="pill" aria-pressed="false" data-filter="garden">Garden</button>
+        <button class="pill" aria-pressed="false" data-filter="dresses">Dresses</button>
+        <button class="pill" aria-pressed="false" data-filter="shoes">Shoes</button>
+        <button class="pill" aria-pressed="false" data-filter="watches">Watches</button>
       </div>
 
       <div class="grid" id="productGrid">
-        <article class="card" data-category="kitchen">
+        <article class="card" data-category="dresses">
           <div class="card-icon">
-            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 22h30v20a10 10 0 0 1-10 10H24a10 10 0 0 1-10-10V22Z"/><path d="M44 26h6a6 6 0 0 1 0 12h-6"/></svg>
+            <img src="images/49c56e28279b28c50e52a609f6627704.png" alt="Navy Embroidered Salwar Suit with teal dupatta" loading="lazy">
           </div>
-          <p class="tag">Kitchen &amp; Table</p>
-          <h3>Stoneware Batch Mug</h3>
-          <p class="material">Ash glaze · 350ml · dishwasher safe</p>
+          <p class="tag">Dresses</p>
+          <h3>Navy Embroidered Suit</h3>
+          <p class="material">Georgette · zari embroidery · teal dupatta</p>
           <div class="card-foot">
-            <span class="price tabular">$34</span>
-            <button class="add-btn" data-price="34">Add to basket</button>
+            <span class="price tabular">$148</span>
+            <button class="add-btn" data-price="148">Add to basket</button>
           </div>
         </article>
 
-        <article class="card" data-category="linen">
+        <article class="card" data-category="dresses">
           <div class="card-icon">
-            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 24c8 6 36 6 44 0M10 32c8 6 36 6 44 0M10 40c8 6 36 6 44 0" stroke-linecap="round"/></svg>
+            <img src="images/Bridal_Salwar_Kameez.webp" alt="Wine Embroidered Bridal Salwar Suit" loading="lazy">
           </div>
-          <p class="tag">Linen &amp; Bath</p>
-          <h3>Washed Linen Runner</h3>
-          <p class="material">100% French linen · 40 × 180cm</p>
+          <p class="tag">Dresses</p>
+          <h3>Wine Bridal Suit</h3>
+          <p class="material">Faux georgette · heavy zari border</p>
           <div class="card-foot">
-            <span class="price tabular">$58</span>
-            <button class="add-btn" data-price="58">Add to basket</button>
+            <span class="price tabular">$165</span>
+            <button class="add-btn" data-price="165">Add to basket</button>
           </div>
         </article>
 
-        <article class="card" data-category="light">
+        <article class="card" data-category="shoes">
           <div class="card-icon">
-            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><path d="M32 14v8M22 40h20l-2 8H24l-2-8Z"/><path d="M22 40a10 10 0 1 1 20 0" /></svg>
+            <img src="images/mens-brown-formal-dress-shoes.webp" alt="Leather Oxford dress shoes in black and brown" loading="lazy">
           </div>
-          <p class="tag">Light &amp; Object</p>
-          <h3>Beeswax Taper Set</h3>
-          <p class="material">Uncoated beeswax · set of 6 · 25cm</p>
+          <p class="tag">Shoes</p>
+          <h3>Leather Oxford Brogue</h3>
+          <p class="material">Full-grain leather · black &amp; brown finishes</p>
           <div class="card-foot">
-            <span class="price tabular">$22</span>
-            <button class="add-btn" data-price="22">Add to basket</button>
+            <span class="price tabular">$134</span>
+            <button class="add-btn" data-price="134">Add to basket</button>
           </div>
         </article>
 
-        <article class="card" data-category="kitchen">
+        <article class="card" data-category="shoes">
           <div class="card-icon">
-            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><circle cx="32" cy="32" r="14"/><circle cx="32" cy="32" r="7"/></svg>
+            <img src="images/screenshot_2024-04-05_at_4.42.01_pm_2.jpg" alt="Handcrafted leather oxford shoes on shoe trees" loading="lazy">
           </div>
-          <p class="tag">Kitchen &amp; Table</p>
-          <h3>Cast-Iron Trivet</h3>
-          <p class="material">Sand-cast, raw finish · 18cm</p>
+          <p class="tag">Shoes</p>
+          <h3>Handcrafted Oxford</h3>
+          <p class="material">Bench-crafted leather · multiple finishes</p>
           <div class="card-foot">
-            <span class="price tabular">$46</span>
-            <button class="add-btn" data-price="46">Add to basket</button>
+            <span class="price tabular">$158</span>
+            <button class="add-btn" data-price="158">Add to basket</button>
           </div>
         </article>
 
-        <article class="card" data-category="garden">
+        <article class="card" data-category="watches">
           <div class="card-icon">
-            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 28h28l-3 22a3 3 0 0 1-3 3H24a3 3 0 0 1-3-3l-3-22Z"/><path d="M14 28h36M26 28v-3a6 6 0 0 1 12 0v3"/></svg>
+            <img src="images/1789KM02.webp" alt="Titan Chronograph Watch, black dial" loading="lazy">
           </div>
-          <p class="tag">Garden</p>
-          <h3>Woven Seagrass Basket</h3>
-          <p class="material">Hand-woven abaca · 30cm diameter</p>
+          <p class="tag">Watches</p>
+          <h3>Titan Chronograph Watch</h3>
+          <p class="material">Stainless steel · wood-effect dial · chronograph</p>
           <div class="card-foot">
-            <span class="price tabular">$64</span>
-            <button class="add-btn" data-price="64">Add to basket</button>
+            <span class="price tabular">$145</span>
+            <button class="add-btn" data-price="145">Add to basket</button>
           </div>
         </article>
 
-        <article class="card" data-category="kitchen">
+        <article class="card" data-category="watches">
           <div class="card-icon">
-            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><rect x="12" y="24" width="40" height="18" rx="3"/><path d="M20 24v-4h24v4"/></svg>
+            <img src="images/17382161_2.avif" alt="Racing Chronograph Watch, blue dial" loading="lazy">
           </div>
-          <p class="tag">Kitchen &amp; Table</p>
-          <h3>Olive Wood Board</h3>
-          <p class="material">End-grain, food-safe oil · 35 × 20cm</p>
+          <p class="tag">Watches</p>
+          <h3>Racing Chronograph Watch</h3>
+          <p class="material">Stainless steel · tachymeter bezel</p>
           <div class="card-foot">
-            <span class="price tabular">$52</span>
-            <button class="add-btn" data-price="52">Add to basket</button>
+            <span class="price tabular">$210</span>
+            <button class="add-btn" data-price="210">Add to basket</button>
           </div>
         </article>
       </div>
