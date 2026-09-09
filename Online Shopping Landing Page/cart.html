@@ -1,0 +1,304 @@
+<title>Your Cart — Supermart</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Archivo:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap">
+<style>
+  :root{
+    --ground:#EAE4D6;
+    --surface:#F5F1E8;
+    --surface-alt:#DDD5C2;
+    --ink:#22271F;
+    --ink-soft:#5B5F4F;
+    --accent:#B98D3E;
+    --accent-ink:#4A3A16;
+    --rose:#A24E3D;
+    --sage:#5F6E54;
+    --line:rgba(34,39,31,0.16);
+    --shadow:0 1px 2px rgba(34,39,31,0.06), 0 8px 24px -12px rgba(34,39,31,0.18);
+
+    --space-1:.4rem; --space-2:.8rem; --space-3:1.4rem; --space-4:2.2rem; --space-5:3.6rem; --space-6:5.6rem;
+    --fs-display:clamp(2.5rem, 2rem + 2.4vw, 4.1rem);
+    --fs-h2:clamp(1.7rem, 1.45rem + 1.1vw, 2.5rem);
+    --fs-h3:clamp(1.1rem, 1.02rem + 0.35vw, 1.3rem);
+    --fs-body:1.02rem;
+    --fs-small:.875rem;
+    --radius:14px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#181B13;
+      --surface:#20241A;
+      --surface-alt:#292E1F;
+      --ink:#ECE6D6;
+      --ink-soft:#A6AC96;
+      --accent:#D2A44F;
+      --accent-ink:#1C1608;
+      --rose:#CB7C68;
+      --sage:#93A184;
+      --line:rgba(236,230,214,0.14);
+      --shadow:0 1px 2px rgba(0,0,0,0.3), 0 12px 30px -14px rgba(0,0,0,0.55);
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#181B13;
+    --surface:#20241A;
+    --surface-alt:#292E1F;
+    --ink:#ECE6D6;
+    --ink-soft:#A6AC96;
+    --accent:#D2A44F;
+    --accent-ink:#1C1608;
+    --rose:#CB7C68;
+    --sage:#93A184;
+    --line:rgba(236,230,214,0.14);
+    --shadow:0 1px 2px rgba(0,0,0,0.3), 0 12px 30px -14px rgba(0,0,0,0.55);
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    background:var(--ground);
+    color:var(--ink);
+    font-family:'Archivo', ui-sans-serif, system-ui, sans-serif;
+    font-size:var(--fs-body);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', Georgia, serif;
+    font-weight:600;
+    line-height:1.08;
+    text-wrap:balance;
+    margin:0;
+    color:var(--ink);
+  }
+  p{margin:0;}
+  a{color:inherit;}
+  img,svg{max-width:100%;display:block;}
+  ::selection{background:var(--accent);color:var(--accent-ink);}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px;}
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:.001ms !important; transition-duration:.001ms !important;}
+  }
+
+  .wrap{max-width:1180px;margin:0 auto;padding:0 clamp(1.2rem,4vw,2.6rem);}
+
+  /* ---------- header ---------- */
+  header{
+    position:sticky; top:0; z-index:20;
+    background:color-mix(in srgb, var(--ground) 88%, transparent);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .header-row{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:var(--space-2) 0;
+    gap:var(--space-3);
+  }
+  .logo{
+    font-family:'Fraunces', serif; font-weight:700; font-size:1.3rem;
+    letter-spacing:-.01em;
+    display:flex; align-items:baseline; gap:.4rem;
+  }
+  .logo em{font-style:italic; color:var(--accent); font-weight:500;}
+  .header-actions{display:flex; align-items:center; gap:var(--space-3);}
+  .basket-btn{
+    display:flex; align-items:center; gap:.5rem;
+    background:none; border:1px solid var(--line); color:var(--ink);
+    font-family:'Archivo',sans-serif; font-size:.88rem; font-weight:600;
+    padding:.55rem .9rem; border-radius:999px; cursor:pointer;
+    text-decoration:none;
+  }
+  .basket-btn:hover{border-color:var(--ink-soft);}
+  .basket-count{
+    background:var(--accent); color:var(--accent-ink);
+    font-family:'Space Mono', monospace; font-size:.75rem; font-weight:700;
+    min-width:1.4em; text-align:center; border-radius:999px; padding:.05rem .35rem;
+  }
+  .tabular{font-variant-numeric:tabular-nums;}
+
+  .btn{
+    font-family:'Archivo',sans-serif; font-weight:600; font-size:.95rem;
+    padding:.85rem 1.5rem; border-radius:999px; cursor:pointer;
+    text-decoration:none; display:inline-flex; align-items:center; gap:.5rem;
+    border:1px solid transparent; transition:transform .15s ease, background .15s ease, border-color .15s ease;
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn-primary{background:var(--ink); color:var(--ground);}
+  .btn-primary:hover{background:var(--accent); color:var(--accent-ink);}
+  .btn-ghost{border-color:var(--ink); color:var(--ink); background:transparent;}
+  .btn-ghost:hover{border-color:var(--accent); color:var(--accent-ink); background:var(--accent);}
+
+  /* ---------- cart page ---------- */
+  .cart-section{padding:var(--space-5) 0 var(--space-6);}
+  .cart-section h1{font-size:var(--fs-h2); margin-bottom:var(--space-4);}
+  .cart-layout{display:grid; grid-template-columns:1.6fr .9fr; gap:var(--space-4); align-items:start;}
+
+  .cart-list{display:flex; flex-direction:column; gap:var(--space-3);}
+  .cart-item{
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+    padding:var(--space-3); display:grid; grid-template-columns:84px 1fr auto; gap:var(--space-3); align-items:center;
+  }
+  .cart-item-img{width:84px; height:84px; border-radius:10px; overflow:hidden; background:var(--surface-alt);}
+  .cart-item-img img{width:100%; height:100%; object-fit:cover; object-position:top;}
+  .cart-item-info h3{font-size:1rem;}
+  .cart-item-info .price{font-family:'Space Mono',monospace; color:var(--ink-soft); margin-top:.3rem;}
+  .cart-item-actions{display:flex; flex-direction:column; align-items:flex-end; gap:.6rem;}
+  .qty-control{display:flex; align-items:center; gap:.5rem; border:1px solid var(--line); border-radius:999px; padding:.2rem;}
+  .qty-control button{
+    width:26px; height:26px; border-radius:50%; border:none; background:var(--surface-alt); color:var(--ink);
+    font-family:'Archivo',sans-serif; font-weight:700; cursor:pointer; font-size:1rem; line-height:1;
+  }
+  .qty-control button:hover{background:var(--accent); color:var(--accent-ink);}
+  .qty-control span{min-width:1.4em; text-align:center; font-family:'Space Mono',monospace;}
+  .remove-btn{
+    background:none; border:none; color:var(--rose); font-family:'Archivo',sans-serif;
+    font-size:.82rem; font-weight:600; cursor:pointer; padding:0;
+  }
+  .remove-btn:hover{text-decoration:underline;}
+  .line-total{font-family:'Space Mono',monospace; font-weight:700;}
+
+  .empty-cart{
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+    padding:var(--space-5); text-align:center; color:var(--ink-soft);
+  }
+  .empty-cart p{margin-bottom:var(--space-3);}
+
+  .summary{
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+    padding:var(--space-4); position:sticky; top:calc(56px + var(--space-3));
+  }
+  .summary h2{font-size:var(--fs-h3); margin-bottom:var(--space-3);}
+  .summary-row{display:flex; justify-content:space-between; font-size:.92rem; color:var(--ink-soft); margin-bottom:.6rem;}
+  .summary-row.total{
+    color:var(--ink); font-weight:700; font-size:1.05rem; margin-top:var(--space-2);
+    padding-top:var(--space-2); border-top:1px solid var(--line);
+  }
+  .summary .btn{width:100%; justify-content:center; margin-top:var(--space-3);}
+  .checkout-note{font-size:.85rem; color:var(--sage); margin-top:.8rem; min-height:1.2em; font-weight:600; text-align:center;}
+
+  footer{padding:var(--space-5) 0 var(--space-6); border-top:1px solid var(--line);}
+  .foot-grid{display:flex; justify-content:space-between; gap:var(--space-4); flex-wrap:wrap;}
+  .foot-links{display:flex; gap:var(--space-4); list-style:none; margin:0; padding:0; flex-wrap:wrap;}
+  .foot-links a{text-decoration:none; color:var(--ink-soft); font-size:.9rem;}
+  .foot-links a:hover{color:var(--ink);}
+  .fine{color:var(--ink-soft); font-size:.8rem; margin-top:var(--space-3);}
+
+  @media (max-width: 860px){
+    .cart-layout{grid-template-columns:1fr;}
+    .cart-item{grid-template-columns:64px 1fr; grid-template-rows:auto auto;}
+    .cart-item-img{width:64px; height:64px;}
+    .cart-item-actions{grid-column:1 / -1; flex-direction:row; justify-content:space-between; align-items:center;}
+  }
+</style>
+
+<header>
+  <div class="wrap header-row">
+    <a class="logo" href="index.html">Super<em>mart</em></a>
+    <div class="header-actions">
+      <a class="basket-btn" id="basketBtn" href="cart.html" aria-label="Basket">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8h16l-1.4 11.2a2 2 0 0 1-2 1.8H7.4a2 2 0 0 1-2-1.8L4 8Z"/><path d="M8 8V6a4 4 0 0 1 8 0v2"/></svg>
+        <span class="tabular" id="basketCount">0</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="cart-section">
+    <div class="wrap">
+      <h1>Your cart</h1>
+      <div class="cart-layout">
+        <div>
+          <div class="cart-list" id="cartList"></div>
+          <div class="empty-cart" id="emptyCart" hidden>
+            <p>Your cart is empty.</p>
+            <a class="btn btn-primary" href="index.html#shop">Continue shopping</a>
+          </div>
+        </div>
+        <div class="summary">
+          <h2>Order summary</h2>
+          <div class="summary-row"><span>Items</span><span class="tabular" id="summaryItems">0</span></div>
+          <div class="summary-row total"><span>Total</span><span class="tabular" id="summaryTotal">$0</span></div>
+          <button class="btn btn-primary" id="checkoutBtn">Checkout</button>
+          <p class="checkout-note" id="checkoutNote"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="about">
+  <div class="wrap foot-grid">
+    <div>
+      <div class="logo">Super<em>mart</em></div>
+      <p class="fine">© 2026 Supermart. Small-batch goods, shipped from the studios that make them.</p>
+    </div>
+    <ul class="foot-links">
+      <li><a href="index.html#shop">Shop</a></li>
+      <li><a href="index.html#makers">Makers</a></li>
+      <li><a href="index.html#about">About</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script src="cart.js"></script>
+<script>
+  function renderCart(){
+    var cart = getCart();
+    var listEl = document.getElementById('cartList');
+    var emptyEl = document.getElementById('emptyCart');
+    listEl.innerHTML = '';
+
+    if(cart.length === 0){
+      emptyEl.hidden = false;
+    }else{
+      emptyEl.hidden = true;
+      cart.forEach(function(item){
+        var row = document.createElement('div');
+        row.className = 'cart-item';
+        row.innerHTML =
+          '<div class="cart-item-img"><img src="' + item.image + '" alt="' + item.name + '"></div>' +
+          '<div class="cart-item-info">' +
+            '<h3>' + item.name + '</h3>' +
+            '<p class="price tabular">$' + item.price + '</p>' +
+          '</div>' +
+          '<div class="cart-item-actions">' +
+            '<div class="qty-control">' +
+              '<button type="button" data-action="dec" aria-label="Decrease quantity">-</button>' +
+              '<span class="tabular">' + item.qty + '</span>' +
+              '<button type="button" data-action="inc" aria-label="Increase quantity">+</button>' +
+            '</div>' +
+            '<span class="line-total tabular">$' + (item.qty * item.price) + '</span>' +
+            '<button type="button" class="remove-btn" data-action="remove">Remove</button>' +
+          '</div>';
+
+        row.querySelector('[data-action="inc"]').addEventListener('click', function(){
+          setCartQty(item.name, item.qty + 1);
+          renderCart();
+        });
+        row.querySelector('[data-action="dec"]').addEventListener('click', function(){
+          setCartQty(item.name, item.qty - 1);
+          renderCart();
+        });
+        row.querySelector('[data-action="remove"]').addEventListener('click', function(){
+          removeFromCart(item.name);
+          renderCart();
+        });
+
+        listEl.appendChild(row);
+      });
+    }
+
+    document.getElementById('summaryItems').textContent = getCartCount(cart);
+    document.getElementById('summaryTotal').textContent = '$' + getCartTotal(cart);
+    updateBasketCountUI();
+  }
+
+  document.getElementById('checkoutBtn').addEventListener('click', function(){
+    if(getCart().length === 0) return;
+    saveCart([]);
+    renderCart();
+    document.getElementById('checkoutNote').textContent = 'Order placed — thanks for shopping small-batch!';
+  });
+
+  renderCart();
+</script>

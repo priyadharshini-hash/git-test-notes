@@ -119,6 +119,7 @@
     background:none; border:1px solid var(--line); color:var(--ink);
     font-family:'Archivo',sans-serif; font-size:.88rem; font-weight:600;
     padding:.55rem .9rem; border-radius:999px; cursor:pointer;
+    text-decoration:none;
   }
   .basket-btn:hover{border-color:var(--ink-soft);}
   .basket-count{
@@ -295,10 +296,10 @@
       <a href="#about">About</a>
     </nav>
     <div class="header-actions">
-      <button class="basket-btn" id="basketBtn" aria-label="Basket">
+      <a class="basket-btn" id="basketBtn" href="cart.html" aria-label="Basket">
         <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8h16l-1.4 11.2a2 2 0 0 1-2 1.8H7.4a2 2 0 0 1-2-1.8L4 8Z"/><path d="M8 8V6a4 4 0 0 1 8 0v2"/></svg>
         <span class="tabular" id="basketCount">0</span>
-      </button>
+      </a>
       <button class="nav-toggle" aria-label="Menu">
         <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
@@ -361,7 +362,7 @@
           <p class="material">Georgette · zari embroidery · teal dupatta</p>
           <div class="card-foot">
             <span class="price tabular">$148</span>
-            <button class="add-btn" data-price="148">Add to basket</button>
+            <button class="add-btn" data-name="Navy Embroidered Suit" data-price="148" data-image="images/49c56e28279b28c50e52a609f6627704.png">Add to basket</button>
           </div>
         </article>
 
@@ -374,7 +375,7 @@
           <p class="material">Faux georgette · heavy zari border</p>
           <div class="card-foot">
             <span class="price tabular">$165</span>
-            <button class="add-btn" data-price="165">Add to basket</button>
+            <button class="add-btn" data-name="Wine Bridal Suit" data-price="165" data-image="images/Bridal_Salwar_Kameez.webp">Add to basket</button>
           </div>
         </article>
 
@@ -387,7 +388,7 @@
           <p class="material">Full-grain leather · black &amp; brown finishes</p>
           <div class="card-foot">
             <span class="price tabular">$134</span>
-            <button class="add-btn" data-price="134">Add to basket</button>
+            <button class="add-btn" data-name="Leather Oxford Brogue" data-price="134" data-image="images/mens-brown-formal-dress-shoes.webp">Add to basket</button>
           </div>
         </article>
 
@@ -400,7 +401,7 @@
           <p class="material">Bench-crafted leather · multiple finishes</p>
           <div class="card-foot">
             <span class="price tabular">$158</span>
-            <button class="add-btn" data-price="158">Add to basket</button>
+            <button class="add-btn" data-name="Handcrafted Oxford" data-price="158" data-image="images/screenshot_2024-04-05_at_4.42.01_pm_2.jpg">Add to basket</button>
           </div>
         </article>
 
@@ -413,7 +414,7 @@
           <p class="material">Stainless steel · wood-effect dial · chronograph</p>
           <div class="card-foot">
             <span class="price tabular">$145</span>
-            <button class="add-btn" data-price="145">Add to basket</button>
+            <button class="add-btn" data-name="Titan Chronograph Watch" data-price="145" data-image="images/1789KM02.webp">Add to basket</button>
           </div>
         </article>
 
@@ -426,7 +427,7 @@
           <p class="material">Stainless steel · tachymeter bezel</p>
           <div class="card-foot">
             <span class="price tabular">$210</span>
-            <button class="add-btn" data-price="210">Add to basket</button>
+            <button class="add-btn" data-name="Racing Chronograph Watch" data-price="210" data-image="images/17382161_2.avif">Add to basket</button>
           </div>
         </article>
       </div>
@@ -509,17 +510,22 @@
   </div>
 </footer>
 
+<script src="cart.js"></script>
 <script>
-  var basketCount = 0;
-  var basketCountEl = document.getElementById('basketCount');
+  updateBasketCountUI();
 
   document.querySelectorAll('.add-btn').forEach(function(btn){
     btn.addEventListener('click', function(){
       if (btn.dataset.added === 'true') return;
+      addToCart({
+        name: btn.dataset.name,
+        price: parseFloat(btn.dataset.price),
+        image: btn.dataset.image
+      });
+      updateBasketCountUI();
+
       btn.dataset.added = 'true';
       btn.textContent = 'Added';
-      basketCount += 1;
-      basketCountEl.textContent = basketCount;
       setTimeout(function(){
         btn.dataset.added = 'false';
         btn.textContent = 'Add to basket';
