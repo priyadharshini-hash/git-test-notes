@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 240" role="img" aria-labelledby="linenTitle">
+  <title id="linenTitle">Folded washed linen table runner</title>
+  <defs>
+    <linearGradient id="linenBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E4DCC8"/>
+      <stop offset="1" stop-color="#D2C7AC"/>
+    </linearGradient>
+    <linearGradient id="foldTop" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F5F1E8"/>
+      <stop offset="1" stop-color="#E6DFCC"/>
+    </linearGradient>
+  </defs>
+  <rect width="300" height="240" fill="url(#linenBg)"/>
+  <ellipse cx="150" cy="196" rx="100" ry="14" fill="#4A3A16" opacity=".12"/>
+  <g>
+    <rect x="46" y="150" width="208" height="30" rx="6" fill="#B98D3E" opacity=".9"/>
+    <rect x="46" y="118" width="208" height="30" rx="6" fill="url(#foldTop)"/>
+    <rect x="46" y="86" width="208" height="30" rx="6" fill="#DDD5C2"/>
+    <rect x="46" y="54" width="208" height="30" rx="6" fill="url(#foldTop)"/>
+    <path d="M46 84c20 6 40-4 60 2s40 6 60 0 40-6 60 0" stroke="#B0A788" stroke-width="2" fill="none" opacity=".5"/>
+    <path d="M46 116c20 6 40-4 60 2s40 6 60 0 40-6 60 0" stroke="#B0A788" stroke-width="2" fill="none" opacity=".5"/>
+    <path d="M46 148c20 6 40-4 60 2s40 6 60 0 40-6 60 0" stroke="#8A6425" stroke-width="2" fill="none" opacity=".45"/>
+  </g>
+  <rect x="46" y="54" width="6" height="126" fill="#00000010"/>
+  <rect x="248" y="54" width="6" height="126" fill="#00000010"/>
+</svg>

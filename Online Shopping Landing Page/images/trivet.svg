@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 240" role="img" aria-labelledby="trivetTitle">
+  <title id="trivetTitle">Sand-cast raw iron trivet</title>
+  <defs>
+    <linearGradient id="trivetBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E4DCC8"/>
+      <stop offset="1" stop-color="#D2C7AC"/>
+    </linearGradient>
+    <radialGradient id="ironBody" cx="0.35" cy="0.3" r="0.85">
+      <stop offset="0" stop-color="#6B6E66"/>
+      <stop offset=".55" stop-color="#3E4139"/>
+      <stop offset="1" stop-color="#22271F"/>
+    </radialGradient>
+    <radialGradient id="ironCore" cx="0.4" cy="0.35" r="0.8">
+      <stop offset="0" stop-color="#8A8D82"/>
+      <stop offset="1" stop-color="#4A4D44"/>
+    </radialGradient>
+  </defs>
+  <rect width="300" height="240" fill="url(#trivetBg)"/>
+  <ellipse cx="150" cy="205" rx="80" ry="12" fill="#4A3A16" opacity=".12"/>
+  <circle cx="150" cy="120" r="76" fill="url(#ironBody)"/>
+  <circle cx="150" cy="120" r="76" fill="none" stroke="#151812" stroke-width="3"/>
+  <circle cx="150" cy="120" r="38" fill="url(#ironCore)"/>
+  <path d="M150 44v152M74 120h152M97 67l106 106M203 67 97 173" stroke="#151812" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="150" cy="120" r="10" fill="#151812"/>
+  <circle cx="118" cy="88" r="4" fill="#8A8D82" opacity=".6"/>
+</svg>

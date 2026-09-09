@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 240" role="img" aria-labelledby="boardTitle">
+  <title id="boardTitle">Olive wood end-grain cutting board</title>
+  <defs>
+    <linearGradient id="boardBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E4DCC8"/>
+      <stop offset="1" stop-color="#D2C7AC"/>
+    </linearGradient>
+    <linearGradient id="woodBody" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#C79A5B"/>
+      <stop offset=".5" stop-color="#A9793F"/>
+      <stop offset="1" stop-color="#8C6230"/>
+    </linearGradient>
+  </defs>
+  <rect width="300" height="240" fill="url(#boardBg)"/>
+  <ellipse cx="150" cy="200" rx="98" ry="14" fill="#4A3A16" opacity=".14"/>
+  <rect x="54" y="86" width="192" height="96" rx="16" fill="url(#woodBody)"/>
+  <path d="M54 102h192M54 118h192M54 134h192M54 150h192M54 166h192" stroke="#7A5227" stroke-width="2" opacity=".4"/>
+  <path d="M60 92c30 8 24 30 0 20M240 92c-30 8-24 30 0 20" stroke="#5F4520" stroke-width="2" fill="none" opacity=".4"/>
+  <circle cx="222" cy="102" r="7" fill="none" stroke="#5F4520" stroke-width="3" opacity=".55"/>
+  <rect x="54" y="86" width="192" height="96" rx="16" fill="none" stroke="#5F4520" stroke-width="3" opacity=".5"/>
+</svg>
