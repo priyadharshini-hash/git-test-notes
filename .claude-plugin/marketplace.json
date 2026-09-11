@@ -1,0 +1,14 @@
+{
+  "name": "priya-plugins",
+  "owner": {
+    "name": "Priya",
+    "email": "your-email@example.com"
+  },
+  "plugins": [
+    {
+      "name": "release-tracker",
+      "source": "./plugins/release-tracker",
+      "description": "Helps manage software release coordination via Notion and Slack"
+    }
+  ]
+}
