@@ -9,6 +9,11 @@
       "name": "release-tracker",
       "source": "./plugins/release-tracker",
       "description": "Helps manage software release coordination via Notion and Slack"
+    },
+    {
+      "name": "daily-planner",
+      "source": "./plugins/daily-planner",
+      "description": "Daily task planning, end-of-day summaries, and meeting notes support with automatic archiving"
     }
   ]
 }
