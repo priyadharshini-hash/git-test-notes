@@ -126,6 +126,7 @@
   .btn-primary:hover{background:var(--accent); color:var(--accent-ink);}
   .btn-ghost{border-color:var(--ink); color:var(--ink); background:transparent;}
   .btn-ghost:hover{border-color:var(--accent); color:var(--accent-ink); background:var(--accent);}
+  .btn[aria-disabled="true"]{opacity:.5; cursor:not-allowed; pointer-events:none;}
 
   /* ---------- cart page ---------- */
   .cart-section{padding:var(--space-5) 0 var(--space-6);}
@@ -173,7 +174,6 @@
     padding-top:var(--space-2); border-top:1px solid var(--line);
   }
   .summary .btn{width:100%; justify-content:center; margin-top:var(--space-3);}
-  .checkout-note{font-size:.85rem; color:var(--sage); margin-top:.8rem; min-height:1.2em; font-weight:600; text-align:center;}
 
   footer{padding:var(--space-5) 0 var(--space-6); border-top:1px solid var(--line);}
   .foot-grid{display:flex; justify-content:space-between; gap:var(--space-4); flex-wrap:wrap;}
@@ -218,8 +218,7 @@
           <h2>Order summary</h2>
           <div class="summary-row"><span>Items</span><span class="tabular" id="summaryItems">0</span></div>
           <div class="summary-row total"><span>Total</span><span class="tabular" id="summaryTotal">$0</span></div>
-          <button class="btn btn-primary" id="checkoutBtn">Checkout</button>
-          <p class="checkout-note" id="checkoutNote"></p>
+          <a class="btn btn-primary" id="checkoutBtn" href="payment.html">Checkout</a>
         </div>
       </div>
     </div>
@@ -291,14 +290,14 @@
     document.getElementById('summaryItems').textContent = getCartCount(cart);
     document.getElementById('summaryTotal').textContent = '$' + getCartTotal(cart);
     updateBasketCountUI();
-  }
 
-  document.getElementById('checkoutBtn').addEventListener('click', function(){
-    if(getCart().length === 0) return;
-    saveCart([]);
-    renderCart();
-    document.getElementById('checkoutNote').textContent = 'Order placed — thanks for shopping small-batch!';
-  });
+    var checkoutBtn = document.getElementById('checkoutBtn');
+    if(cart.length === 0){
+      checkoutBtn.setAttribute('aria-disabled', 'true');
+    }else{
+      checkoutBtn.removeAttribute('aria-disabled');
+    }
+  }
 
   renderCart();
 </script>
