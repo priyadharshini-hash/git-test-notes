@@ -1,0 +1,509 @@
+<title>Payment — Supermart</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Archivo:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap">
+<style>
+  :root{
+    --ground:#EAE4D6;
+    --surface:#F5F1E8;
+    --surface-alt:#DDD5C2;
+    --ink:#22271F;
+    --ink-soft:#5B5F4F;
+    --accent:#B98D3E;
+    --accent-ink:#4A3A16;
+    --rose:#A24E3D;
+    --sage:#5F6E54;
+    --line:rgba(34,39,31,0.16);
+    --shadow:0 1px 2px rgba(34,39,31,0.06), 0 8px 24px -12px rgba(34,39,31,0.18);
+
+    --space-1:.4rem; --space-2:.8rem; --space-3:1.4rem; --space-4:2.2rem; --space-5:3.6rem; --space-6:5.6rem;
+    --fs-display:clamp(2.5rem, 2rem + 2.4vw, 4.1rem);
+    --fs-h2:clamp(1.7rem, 1.45rem + 1.1vw, 2.5rem);
+    --fs-h3:clamp(1.1rem, 1.02rem + 0.35vw, 1.3rem);
+    --fs-body:1.02rem;
+    --fs-small:.875rem;
+    --radius:14px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#181B13;
+      --surface:#20241A;
+      --surface-alt:#292E1F;
+      --ink:#ECE6D6;
+      --ink-soft:#A6AC96;
+      --accent:#D2A44F;
+      --accent-ink:#1C1608;
+      --rose:#CB7C68;
+      --sage:#93A184;
+      --line:rgba(236,230,214,0.14);
+      --shadow:0 1px 2px rgba(0,0,0,0.3), 0 12px 30px -14px rgba(0,0,0,0.55);
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#181B13;
+    --surface:#20241A;
+    --surface-alt:#292E1F;
+    --ink:#ECE6D6;
+    --ink-soft:#A6AC96;
+    --accent:#D2A44F;
+    --accent-ink:#1C1608;
+    --rose:#CB7C68;
+    --sage:#93A184;
+    --line:rgba(236,230,214,0.14);
+    --shadow:0 1px 2px rgba(0,0,0,0.3), 0 12px 30px -14px rgba(0,0,0,0.55);
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    background:var(--ground);
+    color:var(--ink);
+    font-family:'Archivo', ui-sans-serif, system-ui, sans-serif;
+    font-size:var(--fs-body);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', Georgia, serif;
+    font-weight:600;
+    line-height:1.08;
+    text-wrap:balance;
+    margin:0;
+    color:var(--ink);
+  }
+  p{margin:0;}
+  a{color:inherit;}
+  img,svg{max-width:100%;display:block;}
+  ::selection{background:var(--accent);color:var(--accent-ink);}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px;}
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:.001ms !important; transition-duration:.001ms !important;}
+  }
+
+  .wrap{max-width:1180px;margin:0 auto;padding:0 clamp(1.2rem,4vw,2.6rem);}
+
+  /* ---------- header ---------- */
+  header{
+    position:sticky; top:0; z-index:20;
+    background:color-mix(in srgb, var(--ground) 88%, transparent);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .header-row{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:var(--space-2) 0;
+    gap:var(--space-3);
+  }
+  .logo{
+    font-family:'Fraunces', serif; font-weight:700; font-size:1.3rem;
+    letter-spacing:-.01em;
+    display:flex; align-items:baseline; gap:.4rem;
+  }
+  .logo em{font-style:italic; color:var(--accent); font-weight:500;}
+  .header-actions{display:flex; align-items:center; gap:var(--space-3);}
+  .basket-btn{
+    display:flex; align-items:center; gap:.5rem;
+    background:none; border:1px solid var(--line); color:var(--ink);
+    font-family:'Archivo',sans-serif; font-size:.88rem; font-weight:600;
+    padding:.55rem .9rem; border-radius:999px; cursor:pointer;
+    text-decoration:none;
+  }
+  .basket-btn:hover{border-color:var(--ink-soft);}
+  .basket-count{
+    background:var(--accent); color:var(--accent-ink);
+    font-family:'Space Mono', monospace; font-size:.75rem; font-weight:700;
+    min-width:1.4em; text-align:center; border-radius:999px; padding:.05rem .35rem;
+  }
+  .tabular{font-variant-numeric:tabular-nums;}
+
+  .btn{
+    font-family:'Archivo',sans-serif; font-weight:600; font-size:.95rem;
+    padding:.85rem 1.5rem; border-radius:999px; cursor:pointer;
+    text-decoration:none; display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
+    border:1px solid transparent; transition:transform .15s ease, background .15s ease, border-color .15s ease;
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn:disabled{opacity:.6; cursor:not-allowed; transform:none;}
+  .btn-primary{background:var(--ink); color:var(--ground);}
+  .btn-primary:hover{background:var(--accent); color:var(--accent-ink);}
+  .btn-ghost{border-color:var(--ink); color:var(--ink); background:transparent;}
+  .btn-ghost:hover{border-color:var(--accent); color:var(--accent-ink); background:var(--accent);}
+
+  /* ---------- payment page ---------- */
+  .pay-section{padding:var(--space-5) 0 var(--space-6);}
+  .pay-section h1{font-size:var(--fs-h2); margin-bottom:var(--space-4);}
+  .pay-layout{display:grid; grid-template-columns:1.6fr .9fr; gap:var(--space-4); align-items:start;}
+
+  .panel{
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+    padding:var(--space-4);
+  }
+  .panel h2{font-size:var(--fs-h3); margin-bottom:var(--space-3);}
+
+  .method-list{display:flex; flex-direction:column; gap:.7rem; margin-bottom:var(--space-4);}
+  .method-option{
+    display:flex; align-items:center; gap:.7rem;
+    border:1px solid var(--line); border-radius:10px; padding:.8rem .9rem;
+    cursor:pointer;
+  }
+  .method-option:has(input:checked){border-color:var(--accent); background:var(--surface-alt);}
+  .method-option input{accent-color:var(--accent); width:16px; height:16px;}
+  .method-option .method-label{font-weight:600; font-size:.94rem;}
+  .method-option .method-sub{color:var(--ink-soft); font-size:.82rem;}
+
+  .field-group{margin-bottom:var(--space-3);}
+  .field-row{display:flex; gap:var(--space-3);}
+  .field-row .field{flex:1;}
+  label.field-label{display:block; font-size:.82rem; font-weight:600; color:var(--ink-soft); margin-bottom:.4rem;}
+  input.field-input{
+    width:100%; padding:.7rem .85rem; border-radius:8px; border:1px solid var(--line);
+    background:var(--ground); color:var(--ink); font-family:'Space Mono',monospace; font-size:.92rem;
+  }
+  input.field-input:focus-visible{outline:2px solid var(--accent); outline-offset:1px;}
+  .field-error{color:var(--rose); font-size:.78rem; margin-top:.35rem; min-height:1em;}
+
+  .pay-fields{display:none;}
+  .pay-fields.active{display:block;}
+
+  .summary-row{display:flex; justify-content:space-between; font-size:.92rem; color:var(--ink-soft); margin-bottom:.6rem;}
+  .summary-row.total{
+    color:var(--ink); font-weight:700; font-size:1.05rem; margin-top:var(--space-2);
+    padding-top:var(--space-2); border-top:1px solid var(--line);
+  }
+  .summary .btn{width:100%; margin-top:var(--space-3);}
+
+  .status-banner{
+    display:none; align-items:center; gap:.6rem; border-radius:10px; padding:.8rem .9rem;
+    margin-top:var(--space-3); font-size:.88rem; font-weight:600;
+  }
+  .status-banner.show{display:flex;}
+  .status-pending{background:var(--surface-alt); color:var(--ink-soft);}
+  .status-fail{background:rgba(162,78,61,0.15); color:var(--rose);}
+
+  .confirmation{display:none; text-align:center;}
+  .confirmation.show{display:block;}
+  .confirmation .tick{
+    width:52px; height:52px; border-radius:50%; background:var(--sage); color:var(--surface);
+    display:flex; align-items:center; justify-content:center; margin:0 auto var(--space-3);
+    font-size:1.6rem;
+  }
+  .confirmation h2{margin-bottom:.4rem;}
+  .confirmation .order-id{font-family:'Space Mono',monospace; color:var(--ink-soft); margin-bottom:var(--space-3);}
+  .confirmation .conf-details{
+    background:var(--surface-alt); border-radius:10px; padding:var(--space-3); text-align:left;
+    margin-bottom:var(--space-3);
+  }
+  .confirmation .btn{margin-top:var(--space-2);}
+
+  .pay-form.hidden, .empty-cart-note.hidden{display:none;}
+  .empty-cart-note{text-align:center; color:var(--ink-soft); padding:var(--space-4) 0;}
+
+  @media (max-width: 860px){
+    .pay-layout{grid-template-columns:1fr;}
+    .field-row{flex-direction:column;}
+  }
+</style>
+
+<header>
+  <div class="wrap header-row">
+    <a class="logo" href="index.html">Super<em>mart</em></a>
+    <div class="header-actions">
+      <a class="basket-btn" id="basketBtn" href="cart.html" aria-label="Basket">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8h16l-1.4 11.2a2 2 0 0 1-2 1.8H7.4a2 2 0 0 1-2-1.8L4 8Z"/><path d="M8 8V6a4 4 0 0 1 8 0v2"/></svg>
+        <span class="tabular" id="basketCount">0</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="pay-section">
+    <div class="wrap">
+      <h1>Payment</h1>
+      <div class="pay-layout">
+        <div class="panel" id="payPanel">
+          <div id="emptyCartNote" class="empty-cart-note" hidden>
+            <p>Your cart is empty — there's nothing to pay for yet.</p>
+            <a class="btn btn-primary" href="index.html#shop" style="margin-top:1rem;">Continue shopping</a>
+          </div>
+
+          <form id="payForm" class="pay-form" novalidate>
+            <h2>Choose a payment method</h2>
+            <div class="method-list" role="radiogroup" aria-label="Payment method">
+              <label class="method-option">
+                <input type="radio" name="method" value="card" checked>
+                <span>
+                  <span class="method-label">Card</span><br>
+                  <span class="method-sub">Credit or debit card</span>
+                </span>
+              </label>
+              <label class="method-option">
+                <input type="radio" name="method" value="upi">
+                <span>
+                  <span class="method-label">UPI</span><br>
+                  <span class="method-sub">Pay via any UPI app</span>
+                </span>
+              </label>
+              <label class="method-option">
+                <input type="radio" name="method" value="cod">
+                <span>
+                  <span class="method-label">Cash on delivery</span><br>
+                  <span class="method-sub">Pay when your order arrives</span>
+                </span>
+              </label>
+            </div>
+
+            <div class="pay-fields active" id="cardFields">
+              <div class="field-group field">
+                <label class="field-label" for="cardName">Name on card</label>
+                <input class="field-input" id="cardName" type="text" autocomplete="cc-name" placeholder="Jordan Rivera">
+                <p class="field-error" id="cardNameError"></p>
+              </div>
+              <div class="field-group field">
+                <label class="field-label" for="cardNumber">Card number</label>
+                <input class="field-input" id="cardNumber" type="text" inputmode="numeric" autocomplete="cc-number" placeholder="4242 4242 4242 4242" maxlength="19">
+                <p class="field-error" id="cardNumberError"></p>
+              </div>
+              <div class="field-row">
+                <div class="field-group field">
+                  <label class="field-label" for="cardExpiry">Expiry (MM/YY)</label>
+                  <input class="field-input" id="cardExpiry" type="text" autocomplete="cc-exp" placeholder="MM/YY" maxlength="5">
+                  <p class="field-error" id="cardExpiryError"></p>
+                </div>
+                <div class="field-group field">
+                  <label class="field-label" for="cardCvv">CVV</label>
+                  <input class="field-input" id="cardCvv" type="text" inputmode="numeric" autocomplete="cc-csc" placeholder="123" maxlength="4">
+                  <p class="field-error" id="cardCvvError"></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="pay-fields" id="upiFields">
+              <div class="field-group field">
+                <label class="field-label" for="upiId">UPI ID</label>
+                <input class="field-input" id="upiId" type="text" placeholder="yourname@bank">
+                <p class="field-error" id="upiIdError"></p>
+              </div>
+            </div>
+
+            <div class="pay-fields" id="codFields">
+              <p class="method-sub">No payment details needed — settle the amount in cash when your order is delivered.</p>
+            </div>
+
+            <button type="submit" class="btn btn-primary" id="payBtn" style="width:100%;">Pay now</button>
+            <div class="status-banner status-pending" id="pendingBanner">Processing your payment…</div>
+            <div class="status-banner status-fail" id="failBanner">
+              <span id="failMessage">Payment failed. Please check your details and try again.</span>
+            </div>
+          </form>
+
+          <div class="confirmation" id="confirmation">
+            <div class="tick">✓</div>
+            <h2>Order confirmed</h2>
+            <p class="order-id tabular" id="confOrderId"></p>
+            <div class="conf-details">
+              <div class="summary-row"><span>Payment method</span><span id="confMethod"></span></div>
+              <div class="summary-row total"><span>Amount paid</span><span class="tabular" id="confAmount"></span></div>
+            </div>
+            <a class="btn btn-primary" href="index.html#shop">Continue shopping</a>
+          </div>
+        </div>
+
+        <div class="panel summary">
+          <h2>Order summary</h2>
+          <div class="summary-row"><span>Items</span><span class="tabular" id="summaryItems">0</span></div>
+          <div class="summary-row total"><span>Total due</span><span class="tabular" id="summaryTotal">$0</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="about">
+  <div class="wrap foot-grid" style="display:flex; justify-content:space-between; gap:2.2rem; flex-wrap:wrap; padding-top:2rem; border-top:1px solid var(--line);">
+    <div>
+      <div class="logo">Super<em>mart</em></div>
+      <p class="fine" style="color:var(--ink-soft); font-size:.8rem; margin-top:1.4rem;">© 2026 Supermart. Small-batch goods, shipped from the studios that make them.</p>
+    </div>
+    <ul class="foot-links" style="display:flex; gap:2.2rem; list-style:none; margin:0; padding:0; flex-wrap:wrap;">
+      <li><a href="index.html#shop" style="text-decoration:none; color:var(--ink-soft); font-size:.9rem;">Shop</a></li>
+      <li><a href="index.html#makers" style="text-decoration:none; color:var(--ink-soft); font-size:.9rem;">Makers</a></li>
+      <li><a href="index.html#about" style="text-decoration:none; color:var(--ink-soft); font-size:.9rem;">About</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script src="cart.js"></script>
+<script>
+  var isProcessingPayment = false;
+  var paymentComplete = false;
+
+  function centsToDisplay(amount){
+    return '$' + amount;
+  }
+
+  function initPage(){
+    var cart = getCart();
+    updateBasketCountUI();
+
+    document.getElementById('summaryItems').textContent = getCartCount(cart);
+    document.getElementById('summaryTotal').textContent = centsToDisplay(getCartTotal(cart));
+
+    if(cart.length === 0){
+      document.getElementById('emptyCartNote').hidden = false;
+      document.getElementById('payForm').classList.add('hidden');
+      return;
+    }
+
+    document.querySelectorAll('input[name="method"]').forEach(function(radio){
+      radio.addEventListener('change', updateVisibleFields);
+    });
+    updateVisibleFields();
+
+    document.getElementById('payForm').addEventListener('submit', handlePaySubmit);
+  }
+
+  function updateVisibleFields(){
+    var method = getSelectedMethod();
+    document.getElementById('cardFields').classList.toggle('active', method === 'card');
+    document.getElementById('upiFields').classList.toggle('active', method === 'upi');
+    document.getElementById('codFields').classList.toggle('active', method === 'cod');
+  }
+
+  function getSelectedMethod(){
+    var checked = document.querySelector('input[name="method"]:checked');
+    return checked ? checked.value : 'card';
+  }
+
+  function setFieldError(id, message){
+    document.getElementById(id).textContent = message || '';
+  }
+
+  function clearErrors(){
+    ['cardNameError','cardNumberError','cardExpiryError','cardCvvError','upiIdError'].forEach(function(id){
+      setFieldError(id, '');
+    });
+  }
+
+  function luhnCheck(number){
+    var sum = 0;
+    var shouldDouble = false;
+    for(var i = number.length - 1; i >= 0; i--){
+      var digit = parseInt(number.charAt(i), 10);
+      if(shouldDouble){
+        digit *= 2;
+        if(digit > 9) digit -= 9;
+      }
+      sum += digit;
+      shouldDouble = !shouldDouble;
+    }
+    return sum % 10 === 0;
+  }
+
+  function validateCard(){
+    var valid = true;
+    var name = document.getElementById('cardName').value.trim();
+    var number = document.getElementById('cardNumber').value.replace(/\s+/g, '');
+    var expiry = document.getElementById('cardExpiry').value.trim();
+    var cvv = document.getElementById('cardCvv').value.trim();
+
+    if(!name){
+      setFieldError('cardNameError', 'Enter the name on the card.');
+      valid = false;
+    }
+
+    if(!/^\d{13,19}$/.test(number) || !luhnCheck(number)){
+      setFieldError('cardNumberError', 'Enter a valid card number.');
+      valid = false;
+    }
+
+    var expMatch = /^(\d{2})\/(\d{2})$/.exec(expiry);
+    if(!expMatch){
+      setFieldError('cardExpiryError', 'Use MM/YY format.');
+      valid = false;
+    }else{
+      var month = parseInt(expMatch[1], 10);
+      var year = 2000 + parseInt(expMatch[2], 10);
+      var now = new Date();
+      var expDate = new Date(year, month);
+      if(month < 1 || month > 12 || expDate <= now){
+        setFieldError('cardExpiryError', 'Card has expired.');
+        valid = false;
+      }
+    }
+
+    if(!/^\d{3,4}$/.test(cvv)){
+      setFieldError('cardCvvError', 'Enter a valid CVV.');
+      valid = false;
+    }
+
+    return valid;
+  }
+
+  function validateUpi(){
+    var upiId = document.getElementById('upiId').value.trim();
+    if(!/^[\w.\-]{2,}@[a-zA-Z]{2,}$/.test(upiId)){
+      setFieldError('upiIdError', 'Enter a valid UPI ID, e.g. name@bank.');
+      return false;
+    }
+    return true;
+  }
+
+  function validatePaymentDetails(method){
+    clearErrors();
+    if(method === 'card') return validateCard();
+    if(method === 'upi') return validateUpi();
+    return true;
+  }
+
+  function handlePaySubmit(event){
+    event.preventDefault();
+    if(isProcessingPayment || paymentComplete) return;
+
+    var method = getSelectedMethod();
+    if(!validatePaymentDetails(method)) return;
+
+    isProcessingPayment = true;
+    document.getElementById('payBtn').disabled = true;
+    document.getElementById('failBanner').classList.remove('show');
+    document.getElementById('pendingBanner').classList.add('show');
+
+    var cart = getCart();
+    var total = getCartTotal(cart);
+    var cardNumber = document.getElementById('cardNumber').value.replace(/\s+/g, '');
+
+    setTimeout(function(){
+      // Simulated gateway test case: this card number always declines, everything else succeeds.
+      var declined = method === 'card' && cardNumber === '4000000000000002';
+
+      document.getElementById('pendingBanner').classList.remove('show');
+
+      if(declined){
+        isProcessingPayment = false;
+        document.getElementById('payBtn').disabled = false;
+        document.getElementById('failMessage').textContent = 'Payment declined by your bank. Try again or choose another payment method.';
+        document.getElementById('failBanner').classList.add('show');
+        return;
+      }
+
+      completeOrder(method, total);
+    }, 1200);
+  }
+
+  function completeOrder(method, total){
+    paymentComplete = true;
+    saveCart([]);
+    updateBasketCountUI();
+
+    var orderId = 'SM-' + Date.now().toString(36).toUpperCase();
+    var methodLabels = { card: 'Card', upi: 'UPI', cod: 'Cash on delivery' };
+
+    document.getElementById('confOrderId').textContent = 'Order ' + orderId;
+    document.getElementById('confMethod').textContent = methodLabels[method] || method;
+    document.getElementById('confAmount').textContent = centsToDisplay(total);
+
+    document.getElementById('payForm').classList.add('hidden');
+    document.getElementById('confirmation').classList.add('show');
+  }
+
+  initPage();
+</script>
